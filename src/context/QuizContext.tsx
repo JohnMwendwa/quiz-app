@@ -13,7 +13,7 @@ interface Props {
 
 const QuizContext = createContext({} as ContextProps);
 
-const QuizContextProvider = ({ children }: Props) => {
+export const QuizContextProvider = ({ children }: Props) => {
   return (
     <QuizContext.Provider value={{ questions }}>
       {children}
