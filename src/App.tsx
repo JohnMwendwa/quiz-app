@@ -2,15 +2,10 @@ import { useState, useEffect } from "react";
 
 import { useQuizContext } from "./context/QuizContext";
 import { Question } from "./models/question";
+import { Answer } from "./models/answer";
 import Instructions from "./components/Instructions";
 import QuizCard from "./components/QuizCard";
 import ReviewCard from "./components/ReviewCard";
-
-interface Answer {
-  no: number;
-  answer: number;
-  isCorrect: boolean;
-}
 
 function App() {
   const {
