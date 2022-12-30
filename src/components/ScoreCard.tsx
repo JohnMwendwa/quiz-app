@@ -26,6 +26,8 @@ export default function ScoreCard({
     <>
       <h1>Your Score</h1>
 
+      <div>{`${correctQuestions}/${questions.length}`}</div>
+
       <button onClick={handleReview}>Review</button>
       <button onClick={handleRestart}>Restart</button>
     </>
