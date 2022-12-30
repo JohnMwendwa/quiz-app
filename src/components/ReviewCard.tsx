@@ -3,7 +3,7 @@ import { Answer } from "../models/answer";
 import { useQuizContext } from "../context/QuizContext";
 
 interface ReviewCardProps {
-  question: Question;
+  question?: Question;
   userAnswer: Answer[];
   handleFinishReview: () => void;
 }
@@ -16,7 +16,7 @@ export default function ReviewCard({
   const { isLastQuestion, isFirstQuestion, back } = useQuizContext();
   return (
     <>
-      <h1>Quiz Card</h1>
+      <h1>Review Card</h1>
 
       <h3>{question?.question}</h3>
 
