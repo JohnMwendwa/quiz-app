@@ -20,6 +20,7 @@ export default function QuizCard() {
   } = useQuizContext();
 
   const [question, setQuestion] = useState<Question>();
+  const [UserAnswer, setUserAnswer] = useState<Answer[]>([]);
 
   useEffect(() => {
     setQuestion(questions[currentQuestion]);
