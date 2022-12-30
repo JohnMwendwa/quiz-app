@@ -8,7 +8,7 @@ interface ContextProps {
   currentQuestion: number;
   isFirstQuestion: boolean;
   isLastQuestion: boolean;
-  setIsCorrect: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentQuestion: React.Dispatch<React.SetStateAction<number>>;
   back: () => void;
   next: () => void;
 }
@@ -46,11 +46,11 @@ export const QuizContextProvider = ({ children }: Props) => {
       value={{
         questions,
         currentQuestion,
-        setIsCorrect,
         back,
         next,
         isFirstQuestion,
         isLastQuestion,
+        setCurrentQuestion,
       }}
     >
       {children}
