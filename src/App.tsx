@@ -55,13 +55,16 @@ function App() {
 
   return (
     <>
-      <Instructions startSession={setIsSession} />
-      <QuizCard
-        question={question}
-        currentQuestion={currentQuestion}
-        updateAnswers={updateAnswers}
-        handleSubmit={handleSubmit}
-      />
+      {!isSession && <Instructions startSession={setIsSession} />}
+
+      {isSession && (
+        <QuizCard
+          question={question}
+          currentQuestion={currentQuestion}
+          updateAnswers={updateAnswers}
+          handleSubmit={handleSubmit}
+        />
+      )}
     </>
   );
 }
