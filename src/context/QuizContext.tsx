@@ -5,7 +5,9 @@ import { Question } from "../models/question";
 
 interface ContextProps {
   questions: Question[];
-  currentQuestion: Number;
+  currentQuestion: number;
+  isFirstQuestion: boolean;
+  isLastQuestion: boolean;
   setIsCorrect: React.Dispatch<React.SetStateAction<boolean>>;
   back: () => void;
   next: () => void;
@@ -18,8 +20,8 @@ interface Props {
 const QuizContext = createContext({} as ContextProps);
 
 export const QuizContextProvider = ({ children }: Props) => {
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
 
   const back = () => {
     if (currentQuestion !== 0) {
@@ -36,9 +38,20 @@ export const QuizContextProvider = ({ children }: Props) => {
     });
   };
 
+  const isFirstQuestion = currentQuestion === 0;
+  const isLastQuestion = currentQuestion === questions.length - 1;
+
   return (
     <QuizContext.Provider
-      value={{ questions, currentQuestion, setIsCorrect, back, next }}
+      value={{
+        questions,
+        currentQuestion,
+        setIsCorrect,
+        back,
+        next,
+        isFirstQuestion,
+        isLastQuestion,
+      }}
     >
       {children}
     </QuizContext.Provider>
