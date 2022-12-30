@@ -26,6 +26,29 @@ export default function QuizCard() {
     setQuestion(questions[currentQuestion]);
   }, [question, currentQuestion]);
 
+  const updateAnswers = (no: number, answer: number) => {
+    const idx = UserAnswer?.findIndex((answer) => answer.no === no);
+
+    const answerObj: Answer = {
+      no,
+      answer,
+      isCorrect: answer + 1 === question?.correct,
+    };
+
+    if (idx === -1) {
+      return setUserAnswer((prev) => [...prev, answerObj]);
+    }
+
+    setUserAnswer((prev) =>
+      prev?.map((obj) => {
+        if (obj.no === no) {
+          return answerObj;
+        }
+        return obj;
+      })
+    );
+  };
+
   const handleSubmit = () => {
     if (!isLastQuestion) return next();
 
@@ -40,7 +63,7 @@ export default function QuizCard() {
 
       {question?.answers.map((answer, idx) => {
         return (
-          <div key={answer}>
+          <div key={answer} onClick={() => updateAnswers(currentQuestion, idx)}>
             {idx + 1}. {answer}
           </div>
         );
