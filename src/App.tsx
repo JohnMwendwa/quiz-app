@@ -6,6 +6,7 @@ import { Answer } from "./models/answer";
 import Instructions from "./components/Instructions";
 import QuizCard from "./components/QuizCard";
 import ReviewCard from "./components/ReviewCard";
+import ScoreCard from "./components/ScoreCard";
 
 function App() {
   const {
@@ -21,7 +22,7 @@ function App() {
   // Keep track of current question
   const [question, setQuestion] = useState<Question>();
   // Check if a user wants to review questions
-  const [isReview, setIsReview] = useState(true);
+  const [isReview, setIsReview] = useState(false);
   // Track when a user begins answering questions
   const [isSession, setIsSession] = useState(false);
 
@@ -64,8 +65,12 @@ function App() {
   const handleFinishReview = () => {
     if (!isLastQuestion) return next();
     setCurrentQuestion(0);
+    setUserAnswer([]);
     setIsReview(false);
   };
+
+  const handleRestart = () => {};
+  const handleReview = () => {};
 
   return (
     <>
@@ -87,6 +92,8 @@ function App() {
           handleFinishReview={handleFinishReview}
         />
       )}
+
+      <ScoreCard handleRestart={handleRestart} handleReview={handleReview} />
     </>
   );
 }
