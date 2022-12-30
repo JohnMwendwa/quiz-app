@@ -21,7 +21,7 @@ function App() {
   // Keep track of current question
   const [question, setQuestion] = useState<Question>();
   // Check if a user wants to review questions
-  const [isReview, setIsReview] = useState(false);
+  const [isReview, setIsReview] = useState(true);
   // Track when a user begins answering questions
   const [isSession, setIsSession] = useState(false);
 
@@ -61,6 +61,12 @@ function App() {
     alert("Submitted!");
   };
 
+  const handleFinishReview = () => {
+    if (!isLastQuestion) return next();
+    setCurrentQuestion(0);
+    setIsReview(false);
+  };
+
   return (
     <>
       {!isSession && <Instructions startSession={setIsSession} />}
@@ -74,7 +80,13 @@ function App() {
         />
       )}
 
-      {isReview && <ReviewCard />}
+      {isReview && (
+        <ReviewCard
+          question={question}
+          userAnswer={userAnswer}
+          handleFinishReview={handleFinishReview}
+        />
+      )}
     </>
   );
 }
