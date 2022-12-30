@@ -25,6 +25,8 @@ function App() {
   const [isReview, setIsReview] = useState(false);
   // Track when a user begins answering questions
   const [isSession, setIsSession] = useState(false);
+  // show Final score
+  const [showScore, setShowScore] = useState<boolean>(false);
 
   useEffect(() => {
     setQuestion(questions[currentQuestion]);
