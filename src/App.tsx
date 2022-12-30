@@ -62,6 +62,7 @@ function App() {
     setIsSession(false);
     setCurrentQuestion(0);
     alert("Submitted!");
+    setShowScore(true);
   };
 
   const handleFinishReview = () => {
@@ -71,12 +72,20 @@ function App() {
     setIsReview(false);
   };
 
-  const handleRestart = () => {};
-  const handleReview = () => {};
+  const handleRestart = () => {
+    setShowScore(false);
+    setCurrentQuestion(0);
+  };
+  const handleReview = () => {
+    setShowScore(false);
+    setIsReview(true);
+  };
 
   return (
     <>
-      {!isSession && <Instructions startSession={setIsSession} />}
+      {!isSession && !showScore && !isReview && (
+        <Instructions startSession={setIsSession} />
+      )}
 
       {isSession && (
         <QuizCard
@@ -95,7 +104,13 @@ function App() {
         />
       )}
 
-      <ScoreCard handleRestart={handleRestart} handleReview={handleReview} />
+      {showScore && (
+        <ScoreCard
+          handleRestart={handleRestart}
+          handleReview={handleReview}
+          answers={userAnswer}
+        />
+      )}
     </>
   );
 }
