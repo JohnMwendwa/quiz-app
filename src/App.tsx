@@ -14,6 +14,8 @@ function App() {
   const { questions, currentQuestion, isLastQuestion, next } = useQuizContext();
   const [UserAnswer, setUserAnswer] = useState<Answer[]>([]);
   const [question, setQuestion] = useState<Question>();
+  const [isReview, setIsReview] = useState(false);
+  const [isSession, setIsSession] = useState(false);
 
   useEffect(() => {
     setQuestion(questions[currentQuestion]);
