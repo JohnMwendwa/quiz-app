@@ -12,10 +12,21 @@ interface Answer {
 }
 
 function App() {
-  const { questions, currentQuestion, isLastQuestion, next } = useQuizContext();
-  const [UserAnswer, setUserAnswer] = useState<Answer[]>([]);
+  const {
+    questions,
+    currentQuestion,
+    isLastQuestion,
+    next,
+    setCurrentQuestion,
+  } = useQuizContext();
+
+  // Track and save user answers
+  const [userAnswer, setUserAnswer] = useState<Answer[]>([]);
+  // Keep track of current question
   const [question, setQuestion] = useState<Question>();
+  // Check if a user wants to review questions
   const [isReview, setIsReview] = useState(false);
+  // Track when a user begins answering questions
   const [isSession, setIsSession] = useState(false);
 
   useEffect(() => {
@@ -23,7 +34,7 @@ function App() {
   }, [question, currentQuestion]);
 
   const updateAnswers = (no: number, answer: number) => {
-    const idx = UserAnswer?.findIndex((answer) => answer.no === no);
+    const idx = userAnswer?.findIndex((answer) => answer.no === no);
 
     const answerObj: Answer = {
       no,
@@ -49,7 +60,8 @@ function App() {
 
   const handleSubmit = () => {
     if (!isLastQuestion) return next();
-
+    setIsSession(false);
+    setCurrentQuestion(0);
     alert("Submitted!");
   };
 
