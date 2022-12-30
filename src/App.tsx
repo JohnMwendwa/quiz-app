@@ -75,6 +75,8 @@ function App() {
   const handleRestart = () => {
     setShowScore(false);
     setCurrentQuestion(0);
+    setUserAnswer([]);
+    setIsReview(false);
   };
   const handleReview = () => {
     setShowScore(false);
