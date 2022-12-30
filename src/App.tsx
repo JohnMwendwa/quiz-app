@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { useQuizContext } from "./context/QuizContext";
 import { Question } from "./models/question";
+import Instructions from "./components/Instructions";
 import QuizCard from "./components/QuizCard";
 
 interface Answer {
@@ -54,6 +55,7 @@ function App() {
 
   return (
     <>
+      <Instructions startSession={setIsSession} />
       <QuizCard
         question={question}
         currentQuestion={currentQuestion}
