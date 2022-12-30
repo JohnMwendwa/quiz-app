@@ -1,7 +1,9 @@
+import QuizCard from "./components/QuizCard";
+
 function App() {
   return (
     <>
-      <h1>Hello world!</h1>
+      <QuizCard />
     </>
   );
 }
