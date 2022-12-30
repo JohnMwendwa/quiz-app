@@ -4,6 +4,7 @@ import { useQuizContext } from "./context/QuizContext";
 import { Question } from "./models/question";
 import Instructions from "./components/Instructions";
 import QuizCard from "./components/QuizCard";
+import ReviewCard from "./components/ReviewCard";
 
 interface Answer {
   no: number;
@@ -77,6 +78,8 @@ function App() {
           handleSubmit={handleSubmit}
         />
       )}
+
+      {isReview && <ReviewCard />}
     </>
   );
 }
