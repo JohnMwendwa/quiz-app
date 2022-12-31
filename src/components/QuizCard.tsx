@@ -10,7 +10,7 @@ interface QuizCardProps {
   handleSubmit: () => void;
 }
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@ const Container = styled.div`
   }
 `;
 
-const Option = styled.div`
+export const Option = styled.div`
   border: 1px solid black;
   padding: 5px 10px;
   border-radius: 3px;
@@ -37,7 +37,7 @@ const Option = styled.div`
   cursor: pointer;
 `;
 
-const Counter = styled.div`
+export const Counter = styled.div`
   position: absolute;
   top: -30px;
   right: -30px;
