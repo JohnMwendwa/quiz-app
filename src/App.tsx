@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 
 import { useQuizContext } from "./context/QuizContext";
 import { Question } from "./models/question";
@@ -7,6 +8,33 @@ import Instructions from "./components/Instructions";
 import QuizCard from "./components/QuizCard";
 import ReviewCard from "./components/ReviewCard";
 import ScoreCard from "./components/ScoreCard";
+
+const GlobalStyles = createGlobalStyle`
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+
+body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh
+}
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  margin: 0 20px;
+  max-width: 500px;
+  border: 2px solid black;
+  border-radius: 5px;
+`;
 
 function App() {
   const {
@@ -84,7 +112,8 @@ function App() {
   };
 
   return (
-    <>
+    <Container>
+      <GlobalStyles />
       {!isSession && !showScore && !isReview && (
         <Instructions startSession={setIsSession} />
       )}
@@ -113,7 +142,7 @@ function App() {
           answers={userAnswer}
         />
       )}
-    </>
+    </Container>
   );
 }
 
