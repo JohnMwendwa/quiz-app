@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import { useQuizContext } from "../context/QuizContext";
@@ -35,6 +36,10 @@ export const Option = styled.div`
   border-radius: 3px;
   margin-top: 10px;
   cursor: pointer;
+
+  &.active {
+    border: 2px solid green;
+  }
 `;
 
 export const Counter = styled.div`
@@ -56,7 +61,18 @@ export default function QuizCard({
   handleSubmit,
 }: QuizCardProps) {
   const { questions, isLastQuestion } = useQuizContext();
+  const [selected, setSelected] = useState<number>(-1);
 
+  const handleClick = (currentQuestion: number, idx: number) => {
+    console.log("Clicked", idx);
+    setSelected(idx);
+    updateAnswers(currentQuestion, idx);
+  };
+
+  const handleNext = () => {
+    setSelected(-1);
+    handleSubmit();
+  };
   return (
     <Container>
       <Counter>
@@ -71,8 +87,9 @@ export default function QuizCard({
         {question?.answers.map((answer, idx) => {
           return (
             <Option
+              className={selected === idx ? "active" : ""}
               key={answer}
-              onClick={() => updateAnswers(currentQuestion, idx)}
+              onClick={() => handleClick(currentQuestion, idx)}
             >
               {idx + 1}. {answer}
             </Option>
@@ -80,9 +97,7 @@ export default function QuizCard({
         })}
       </div>
 
-      <button onClick={handleSubmit}>
-        {isLastQuestion ? "Finish" : "Next"}
-      </button>
+      <button onClick={handleNext}>{isLastQuestion ? "Finish" : "Next"}</button>
     </Container>
   );
 }
