@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 import { useQuizContext } from "../context/QuizContext";
 import { Answer } from "../models/answer";
 
@@ -6,6 +8,41 @@ interface ScoreCardProps {
   handleReview: () => void;
   answers: Answer[];
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+`;
+const Score = styled.div`
+  font-size: 1.5rem;
+  padding: 5px 0;
+`;
+const ScoreReview = styled.div`
+  span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+`;
+const Buttons = styled.div`
+  margin-top: 30px;
+
+  button {
+    margin-right: 10px;
+    padding: 8px 10px;
+    background-color: yellow;
+    // border: inherit;
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+
+    :last-child {
+      background-color: #00561b;
+      color: white;
+    }
+  }
+`;
 
 export default function ScoreCard({
   handleRestart,
@@ -46,13 +83,19 @@ export default function ScoreCard({
   }
 
   return (
-    <>
+    <Container>
       <h1>Your Score</h1>
 
-      <div>{`${correctQuestions}/${questions.length}`}</div>
-      <div>Score Review : {scoreReview}</div>
-      <button onClick={handleReview}>Review</button>
-      <button onClick={handleRestart}>Restart</button>
-    </>
+      <Score>{`${correctQuestions}/${questions.length}`}</Score>
+
+      <ScoreReview>
+        <span>Score Review :</span> {scoreReview}
+      </ScoreReview>
+
+      <Buttons>
+        <button onClick={handleReview}>Review Quiz</button>
+        <button onClick={handleRestart}>Restart Quiz</button>
+      </Buttons>
+    </Container>
   );
 }
