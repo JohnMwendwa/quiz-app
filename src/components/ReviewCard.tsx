@@ -16,6 +16,10 @@ const Wrapper = styled(Option)`
     border: none;
     outline: 2px solid green;
   }
+  &.wrong {
+    border: none;
+    outline: 1px solid red;
+  }
 `;
 
 const Buttons = styled.div`
