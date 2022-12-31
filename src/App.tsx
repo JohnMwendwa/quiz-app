@@ -89,7 +89,6 @@ function App() {
     if (!isLastQuestion) return next();
     setIsSession(false);
     setCurrentQuestion(0);
-    alert("Submitted!");
     setShowScore(true);
   };
 
