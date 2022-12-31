@@ -25,6 +25,7 @@ const Buttons = styled.div`
     :last-child {
       background-color: black;
       color: white;
+      border-radius: 3px;
     }
   }
 `;
@@ -36,6 +37,8 @@ export default function ReviewCard({
 }: ReviewCardProps) {
   const { isLastQuestion, isFirstQuestion, back, questions, currentQuestion } =
     useQuizContext();
+
+  const findAnswer = userAnswer.find((q) => q.no === currentQuestion);
 
   return (
     <Container>
@@ -52,7 +55,16 @@ export default function ReviewCard({
           return (
             <Wrapper
               key={answer}
-              className={idx + 1 === question.correct ? "correct" : ""}
+              className={
+                idx + 1 === question.correct
+                  ? "correct"
+                  : "" ||
+                    (findAnswer &&
+                      findAnswer.answer + 1 !== question.correct &&
+                      findAnswer.answer === idx)
+                  ? "wrong"
+                  : ""
+              }
             >
               {idx + 1}. {answer}
             </Wrapper>
