@@ -14,7 +14,7 @@ export default function QuizCard({
   updateAnswers,
   handleSubmit,
 }: QuizCardProps) {
-  const { back, isFirstQuestion, isLastQuestion } = useQuizContext();
+  const { isLastQuestion } = useQuizContext();
 
   return (
     <>
@@ -29,8 +29,6 @@ export default function QuizCard({
           </div>
         );
       })}
-
-      {!isFirstQuestion && <button onClick={back}>Back</button>}
 
       <button onClick={handleSubmit}>
         {isLastQuestion ? "Finish" : "Next"}
