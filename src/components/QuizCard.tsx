@@ -28,6 +28,12 @@ export const Container = styled.div`
     margin-top: 10px;
     cursor: pointer;
   }
+
+  > button {
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+  }
 `;
 
 export const Option = styled.div`
