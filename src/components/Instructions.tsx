@@ -1,10 +1,38 @@
+import styled from "styled-components";
+
 interface InstructionsProps {
   startSession: (value: boolean) => void;
 }
 
+const Container = styled.div`
+  h1 {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  h3 {
+    text-decoration: underline;
+    margin-bottom: 5px;
+  }
+  li {
+    margin-bottom: 5px;
+    margin-left: 5px;
+  }
+
+  button {
+    display: block;
+    padding: 8px 15px;
+    margin-left: auto;
+    cursor: pointer;
+    color: white;
+    background-color: #00561b;
+    border: inherit;
+    border-radius: 3px;
+  }
+`;
+
 export default function Instructions({ startSession }: InstructionsProps) {
   return (
-    <div>
+    <Container>
       <h1>Instructions</h1>
       <h3>
         Before you begin this quiz, read the following instructions carefully :
@@ -28,7 +56,7 @@ export default function Instructions({ startSession }: InstructionsProps) {
           or retake the quiz again.
         </li>
       </ol>
-      <button onClick={() => startSession(true)}>Start</button>
-    </div>
+      <button onClick={() => startSession(true)}>Start Quiz</button>
+    </Container>
   );
 }
