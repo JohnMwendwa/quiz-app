@@ -96,6 +96,12 @@ Error generating stack: `+o.message+`
     margin-top: 10px;
     cursor: pointer;
   }
+
+  > button {
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+  }
 `,ud=dt.div`
   border: 1px solid black;
   padding: 5px 10px;
@@ -188,4 +194,4 @@ body{
   max-width: 500px;
   border: 2px solid black;
   border-radius: 5px;
-`;function Zm(){const{questions:e,currentQuestion:t,isLastQuestion:n,next:r,setCurrentQuestion:l}=co(),[o,i]=re.useState([]),[u,s]=re.useState(),[c,h]=re.useState(!1),[p,m]=re.useState(!1),[w,g]=re.useState(!1);return re.useEffect(()=>{s(e[t])},[u,t]),We(Xm,{children:[W(Km,{}),!p&&!w&&!c&&W(Dm,{startSession:m}),p&&W(jm,{question:u,currentQuestion:t,updateAnswers:(y,C)=>{const N=o==null?void 0:o.findIndex(P=>P.no===y),$={no:y,answer:C,isCorrect:C+1===(u==null?void 0:u.correct)};if(N===-1)return i(P=>[...P,$]);i(P=>P==null?void 0:P.map(U=>U.no===y?$:U))},handleSubmit:()=>{if(!n)return r();m(!1),l(0),alert("Submitted!"),g(!0)}}),c&&W(Hm,{question:u,userAnswer:o,handleFinishReview:()=>{if(!n)return r();l(0),i([]),h(!1)}}),w&&W(Gm,{handleRestart:()=>{g(!1),l(0),i([]),h(!1)},handleReview:()=>{g(!1),h(!0)},answers:o})]})}ai.createRoot(document.getElementById("root")).render(W(Vn.StrictMode,{children:W(Mh,{children:W(Zm,{})})}));
+`;function Zm(){const{questions:e,currentQuestion:t,isLastQuestion:n,next:r,setCurrentQuestion:l}=co(),[o,i]=re.useState([]),[u,s]=re.useState(),[c,h]=re.useState(!1),[p,m]=re.useState(!1),[w,g]=re.useState(!1);return re.useEffect(()=>{s(e[t])},[u,t]),We(Xm,{children:[W(Km,{}),!p&&!w&&!c&&W(Dm,{startSession:m}),p&&W(jm,{question:u,currentQuestion:t,updateAnswers:(y,C)=>{const N=o==null?void 0:o.findIndex(P=>P.no===y),$={no:y,answer:C,isCorrect:C+1===(u==null?void 0:u.correct)};if(N===-1)return i(P=>[...P,$]);i(P=>P==null?void 0:P.map(U=>U.no===y?$:U))},handleSubmit:()=>{if(!n)return r();m(!1),l(0),g(!0)}}),c&&W(Hm,{question:u,userAnswer:o,handleFinishReview:()=>{if(!n)return r();l(0),i([]),h(!1)}}),w&&W(Gm,{handleRestart:()=>{g(!1),l(0),i([]),h(!1)},handleReview:()=>{g(!1),h(!0)},answers:o})]})}ai.createRoot(document.getElementById("root")).render(W(Vn.StrictMode,{children:W(Mh,{children:W(Zm,{})})}));
