@@ -34,6 +34,14 @@ export const Container = styled.div`
     color: white;
     border-radius: 3px;
   }
+
+  @media screen and (max-width: 600px) {
+    width: 300px;
+  }
+
+  @media screen and (max-width: 360px) {
+    width: 250px;
+  }
 `;
 
 export const Option = styled.div`
@@ -58,6 +66,11 @@ export const Counter = styled.div`
   border-radius: 0 3px 0 20px;
   padding: 3px 15px;
   font-weight: 900;
+
+  @media screen and (max-width: 600px) {
+    top: -20px;
+    right: -20px;
+  }
 `;
 
 export default function QuizCard({
