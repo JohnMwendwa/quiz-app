@@ -21,7 +21,8 @@ body{
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  min-height:100vh
+  min-height:100vh;
+  background:#ddd;
 }
 `;
 
@@ -34,6 +35,11 @@ const Container = styled.div`
   max-width: 500px;
   border: 2px solid black;
   border-radius: 5px;
+
+  @media screen and (max-width: 600px) {
+    padding: 20px;
+    margin: 0 10px;
+  }
 `;
 
 function App() {
