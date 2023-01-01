@@ -13,7 +13,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
+  justify-content: center;
+
+  @media screen and (min-width: 600px) {
+    width: 400px;
+  }
 `;
 const Score = styled.div`
   font-size: 1.5rem;
@@ -30,9 +34,9 @@ const Buttons = styled.div`
 
   button {
     margin-right: 10px;
+    margin-bottom: 5px;
     padding: 8px 10px;
     background-color: yellow;
-    // border: inherit;
     border: 1px solid black;
     border-radius: 3px;
     cursor: pointer;
