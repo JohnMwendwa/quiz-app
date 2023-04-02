@@ -13,9 +13,29 @@ const Container = styled.div`
     text-decoration: underline;
     margin-bottom: 5px;
   }
-  li {
-    margin-bottom: 5px;
-    margin-left: 5px;
+  ol {
+    list-style: none;
+    counter-reset: fancy-numbers;
+
+    li {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      counter-increment: fancy-numbers;
+
+      ::before {
+        content: counter(fancy-numbers);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        font-weight: 700;
+        margin-right: 0.5rem;
+      }
+    }
   }
 
   button {
